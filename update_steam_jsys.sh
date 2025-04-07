@@ -28,8 +28,8 @@ rm -rf ~/.local/share/Steam/ubuntu12_32/steam-runtime/
 cp -r ./ubuntu12_32/steam-runtime ~/.local/share/Steam/ubuntu12_32/
 
 echo Cleaning up...
-#cd ~/Downloads
-#rm -rf steamPackagesTemp/
+cd ~/Downloads
+rm -rf steamPackagesTemp/
 cd
 
 echo Starting steam...
