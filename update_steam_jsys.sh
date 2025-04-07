@@ -45,6 +45,7 @@ cp -r SteamLinuxRuntime_sniper ~/.local/share/Steam/ubuntu12_64/SteamLinuxRuntim
 cd ..
 
 echo Cleaning up...
+cd ..
 rm -rf steamPackagesTemp/
 cd ~
 
