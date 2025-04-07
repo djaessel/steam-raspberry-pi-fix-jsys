@@ -4,7 +4,6 @@ echo Init file system...
 steam
 
 echo Creating Steam Temp Download file...
-cd ~/Downloads
 mkdir steamPackagesTemp
 cd steamPackagesTemp
 
@@ -18,19 +17,36 @@ echo Downloading Steam runtime files...
 #wget -O bins_misc_ubuntu12.zip.vz https://client-update.steamstatic.com/bins_misc_ubuntu12.zip.vz.2224721a20108d2bcc7012ce8aad4be8745bd2b6_18481599
 #wget -O steam_ubuntu12.zip.vz https://client-update.steamstatic.com/steam_ubuntu12.zip.vz.617b4985a32c41761f000695118d3a286c050fd1_2509565
 wget -O runtime_scout_ubuntu12.zip https://client-update.steamstatic.com/runtime_scout_ubuntu12.zip.24b2638d7cf6d284d786803cf17382472465ced7
-#wget -O runtime_sniper_ubuntu12.zip https://client-update.steamstatic.com/runtime_sniper_ubuntu12.zip.99c6062b6c89c13f9843dcc6eed99dfc66e8ef22
+wget -O runtime_sniper_ubuntu12.zip https://client-update.steamstatic.com/runtime_sniper_ubuntu12.zip.99c6062b6c89c13f9843dcc6eed99dfc66e8ef22
 
-echo Unpacking runtime files...
+echo Unpacking 32 Bit runtime files...
 unzip runtime_scout_ubuntu12.zip
+cd ./ubuntu12_32/
+unxz steam-runtime.tar.xz
+tar xf steam-runtime.tar
 
-echo Installing runtime files...
+echo Installing 32 Bit runtime files...
 rm -rf ~/.local/share/Steam/ubuntu12_32/steam-runtime/
-cp -r ./ubuntu12_32/steam-runtime ~/.local/share/Steam/ubuntu12_32/
+cp -r steam-runtime ~/.local/share/Steam/ubuntu12_32/
+cd ..
+
+echo Unpacking 64 Bit runtime files...
+unzip runtime_sniper_ubuntu12.zip
+cd ./ubuntu12_64/
+unxz steam-runtime-sniper.tar.xz
+tar xf steam-runtime-sniper.tar
+
+echo Installing 64 Bit runtime files...
+rm -rf ~/.local/share/Steam/ubuntu12_64/steam-runtime/
+mkdir ~/.local/share/Steam/ubuntu12_64
+#cp -r SteamLinuxRuntime_sniper ~/.local/share/Steam/ubuntu12_64/steam-runtime-sniper
+#cp -r SteamLinuxRuntime_sniper ~/.local/share/Steam/ubuntu12_64/steam-runtime
+cp -r SteamLinuxRuntime_sniper ~/.local/share/Steam/ubuntu12_64/SteamLinuxRuntime_sniper
+cd ..
 
 echo Cleaning up...
-cd ~/Downloads
 rm -rf steamPackagesTemp/
-cd
+cd ~
 
 echo Starting steam...
 steam
